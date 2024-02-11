@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { DarkModeProvider } from '@/context/darkModeContext';
 import { Raleway, Open_Sans, Playfair_Display } from 'next/font/google'
+import { Header } from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 
 const raleway = Raleway({
   subsets: ['latin'],
@@ -53,9 +55,9 @@ export default function RootLayout({
           </Script>
           <YandexMetrika /> */}
           {/* <NextTopLoader height={6} color='#6767ab' /> */}
-          {/* <Header /> */}
+          <Header />
           <main>{children}</main>
-          {/* <Footer /> */}
+          <Footer />
         </body>
       </html>
     </DarkModeProvider>
