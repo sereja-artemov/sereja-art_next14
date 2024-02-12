@@ -42,7 +42,7 @@ export default async function PostBlock() {
           </div>
         </div>
         <Link
-          className="block mb-1.5 leading-snug md:text-lg text-base font-boss"
+          className="block mb-1.5 leading-snug md:text-lg text-base font-semibold"
           href={post.url}
         >
           <h3>{post.title}</h3>
