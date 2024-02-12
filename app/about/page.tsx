@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import avatarPhoto from '../../images/about-photo.png';
+import avatarPhoto from '@/public/images/about-photo.png';
 import Skills from '@/components/Skills/Skills';
 
 function About() {

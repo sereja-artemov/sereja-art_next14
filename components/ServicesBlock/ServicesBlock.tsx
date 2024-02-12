@@ -4,11 +4,11 @@ import Link from 'next/link';
 import { useRef } from 'react';
 import Image, { StaticImageData } from 'next/image';
 
-import testImage1 from '../../images/servicesBlock/develop.png';
-import testImage2 from '../../images/servicesBlock/support.png';
-import testImage3 from '../../images/servicesBlock/promotion.png';
-import testImage4 from '../../images/servicesBlock/html-coding.png';
-import testImage5 from '../../images/servicesBlock/design.png';
+import testImage1 from '@/public/images/servicesBlock/develop.png';
+import testImage2 from '@/public/images/servicesBlock/support.png';
+import testImage3 from '@/public/images/servicesBlock/promotion.png';
+import testImage4 from '@/public/images/servicesBlock/html-coding.png';
+import testImage5 from '@/public/images/servicesBlock/design.png';
 
 type ServicesItemProps = {
   children?: any;
