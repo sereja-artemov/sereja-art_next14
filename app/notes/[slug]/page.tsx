@@ -11,6 +11,7 @@ import rehypeAutolinkHeadings, {
 } from 'rehype-autolink-headings';
 import { s } from 'hastscript';
 import { notFound } from 'next/navigation';
+import { Article, Graph, WithContext } from 'schema-dts';
 
 interface IProps {
   params: { slug: string };
@@ -20,34 +21,34 @@ const NoteLayout = async ({ params }: { params: { slug: string } }) => {
   const post = await getPost(params.slug, 'notes');
   if (!post) notFound()
   
-  // const structuredData: WithContext<Article> = {
-  //   '@context': 'https://schema.org',
-  //   '@type': 'Article',
-  //   headline: post.title,
-  //   url: `${process.env.HOST}/notes/${params.slug}/`,
-  //   image: {
-  //     '@type': 'ImageObject',
-  //     url: `${post.coverImage}`,
-  //   },
-  //   description: post.excerpt,
-  //   datePublished: post.date,
-  //   publisher: {
-  //     '@type': 'Person',
-  //     name: 'Sergey Artemov',
-  //     url: process.env.HOST,
-  //     image: '/avatar.png',
-  //   },
-  //   author: {
-  //     '@type': 'Person',
-  //     name: 'Sergey Artemov',
-  //     url: process.env.HOST,
-  //     image: '/avatar.png',
-  //   },
-  // };
-  // const jsonLd: Graph = {
-  //   '@context': 'https://schema.org',
-  //   '@graph': [structuredData],
-  // };
+  const structuredData: WithContext<Article> = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    url: `${process.env.HOST}/notes/${params.slug}/`,
+    image: {
+      '@type': 'ImageObject',
+      url: `${post.coverImage}`,
+    },
+    description: post.excerpt,
+    datePublished: post.date,
+    publisher: {
+      '@type': 'Person',
+      name: 'Sergey Artemov',
+      url: process.env.HOST,
+      image: '/hero-avatar.jpg',
+    },
+    author: {
+      '@type': 'Person',
+      name: 'Sergey Artemov',
+      url: process.env.HOST,
+      image: '/hero-avatar.jpg',
+    },
+  };
+  const jsonLd: Graph = {
+    '@context': 'https://schema.org',
+    '@graph': [structuredData],
+  };
 
   return (
     <div className='mx-auto prose-code:not-prose w-full prose max-[375px]:prose-sm prose-custom prose-h2:blog-title-link prose-h3:blog-title-link prose-pre:not-prose lg:prose-xl dark:prose-invert prose-code:text-[15px] prose-pre:border prose-pre:border-blockBorderColorDark prose-pre:rounded-xl prose-pre:mt-0 prose-code:before:hidden prose-code:after:hidden prose-pre:rounded-t-none prose-pre:px-0'>
@@ -85,7 +86,10 @@ const NoteLayout = async ({ params }: { params: { slug: string } }) => {
              [rehypePrettyCode, prettyCodeOptions],
            ],
         }}} components={MDXComponentsCustom} />
-
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </div>
   )
 }
@@ -118,7 +122,7 @@ export async function generateMetadata({ params: { slug } }: IProps): Promise<Me
       url: `${process.env.HOST}/${url}`,
       description,
       publishedTime: date,
-      images: `http://tech.sereja-art.ru/upload/blogs/${post.slug}/${post.slug}.jpg`,
+      images: `http://tech.sereja-art.ru/upload/notes/${post.slug}/${post.slug}.jpg`,
     },
     twitter: {
       title,
