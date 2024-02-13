@@ -6,7 +6,7 @@ import HeroBg from '@/public/sereja-sea-bg.jpg';
 const Hero = () => {
   return (
     <section className="container mb-6">
-      <div className="relative flex flex-col-reverse px-4 py-8 overflow-hidden bg-center bg-no-repeat bg-cover lg:items-end text-whiteSecondary bg-darkSecondary lg:pt-20 lg:px-12 lg:pb-12 md:flex-row md:justify-between md:align-top gap-7 md:px-9 md:py-11 rounded-3xl">
+      <div className="relative flex flex-col-reverse px-4 py-8 overflow-hidden bg-center bg-no-repeat bg-cover lg:items-end text-whiteSecondary bg-darkSecondary lg:pt-20 lg:px-12 lg:pb-12 md:flex-row md:justify-between md:align-top gap-7 md:px-9 md:py-11 rounded-3xl max-sm:min-h-[420px]">
         <div className="relative z-10 md:max-w-[285px] lg:max-w-none">
           <h1 className="text-[40px] md:text-[46px] lg:text-[70px] xl:text-[80px] leading-none font-boss mb-3 md:mb-1.5 lg:mb-5 uppercase font-bold">
             sereja <span className="text-stroke">art-</span>
@@ -45,7 +45,7 @@ const Hero = () => {
         </div>
         <div className="relative z-10 w-fit">
           <Image
-            className="max-w-[140px] md:max-w-[119px] mb-2 rounded-full"
+            className="max-w-[85px] md:max-w-[119px] mb-2 rounded-full"
             src={HeroAvatar}
             alt="аватарка"
             quality={90}
