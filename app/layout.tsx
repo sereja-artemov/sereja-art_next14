@@ -5,6 +5,7 @@ import { Raleway, Open_Sans, Playfair_Display } from 'next/font/google'
 import { Header } from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import NextTopLoader from "nextjs-toploader";
+import ScrollProgressBar from "@/components/ScrollProgressBar/ScrollProgressBar";
 
 const raleway = Raleway({
   subsets: ['latin'],
@@ -50,10 +51,11 @@ export default function RootLayout({
             }
           </Script>
           <YandexMetrika /> */}
-          <NextTopLoader height={6} color='#6767ab' />
           <Header />
           <main>{children}</main>
           <Footer />
+          <NextTopLoader height={6} color='#6767ab' />
+          <ScrollProgressBar />
         </body>
       </html>
     </DarkModeProvider>

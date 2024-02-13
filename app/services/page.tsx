@@ -17,7 +17,7 @@ const Services = () => {
 const ServicesItem = ({ itemData }: { itemData: ServicesProps }) => {
   return (
     <div>
-      <h3 className="font-boss text-[1.2rem] lg:text-xl mb-5 leading-normal">
+      <h3 className="text-[1.2rem] lg:text-xl mb-5 leading-normal font-semibold">
         {itemData.group}
       </h3>
       <ul className="p-0 list-none">

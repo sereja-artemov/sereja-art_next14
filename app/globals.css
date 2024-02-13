@@ -57,11 +57,11 @@
   code > [data-line]::before {
     counter-increment: line;
     content: counter(line);
-   
-    /* Other styling */
+
     display: inline-block;
     width: 1rem;
-    margin-right: 2rem;
+    margin-right: 1.2rem;
+    margin-left: 0.8rem;
     text-align: right;
     color: gray;
   }
@@ -123,6 +123,19 @@
   font-weight: 400;
   color: #E06C75;
  }
+
+ figure[data-rehype-pretty-code-figure] {
+  margin: 0;
+ }
+
+ [data-highlighted-chars] {
+  border-radius: 0.25rem;
+  background-color: #52525b80;
+  box-shadow: 0 0 0 4px #52525b80;
+}
+span[data-line] {
+  border-left: 4px solid transparent;
+}
 /* rehype-pretty-code КОНЕЦ */
 }
 

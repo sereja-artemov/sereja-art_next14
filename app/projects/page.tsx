@@ -31,7 +31,7 @@ function Projects() {
                 <AiOutlineCalendar className="w-4 h-auto" />
                 {project.year} год
               </span>
-              <h2 className="mb-1.5 leading-snug md:text-lg text-base font-boss">
+              <h2 className="mb-1.5 leading-snug md:text-lg text-base font-semibold">
                 {project.name}
               </h2>
               <p className="mb-4 text-sm leading-normal xl:text-base">

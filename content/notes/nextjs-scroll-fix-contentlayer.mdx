@@ -1,14 +1,14 @@
 ---
-title: Cкролл не в верхнем положении при использовании NextJS (next/link) с ContentLayer
+title: NextJS (next/link) c ContentLayer. Скролл не вверху
 date: 2023-12-02
 published: true
 category: other
 keywords: keywords
-excerpt: Как исправить ошибку с положением скролла при использовании NextJS (next/link) и ContentLayer
+excerpt: Как исправить ошибку с&nbsp;положением скролла при использовании NextJS (next/link) и&nbsp;ContentLayer
 coverImage: 
 ---
 
-Используем NextJS в связке с ContentLayer для наших страниц. При переходе на страницу блога, скролл оказывается не в верхнем положении, а немного ниже... Это связано с тем, что страница блога не идентифицирована должным образом.
+Использую NextJS в&nbsp;связке с&nbsp;ContentLayer для страниц блога. При переходе на&nbsp;страницу блога, скролл оказывается не&nbsp;в&nbsp;верхнем положении, а&nbsp;немного ниже... Это связано с&nbsp;тем, что страница блога не&nbsp;идентифицирована должным образом.
 
 <CodeTitle title='app/blog/[…slug]/page.tsx' lang='js' />
 ```js /id={post._id}/
@@ -31,7 +31,6 @@ import {
 } from 'react-icons/ai';
 import getLocaleDate from '@/lib/getLocaleDate';
 import { useState } from 'react';
-// ^ This component is just a placeholder, it will give you an error, remove it.
 
 interface IProps {
   params: { slug: string };
@@ -170,4 +169,4 @@ export function generateMetadata({ params: { slug } }: IProps): Metadata {
 }
 ```
 
-У родительского блока должен быть задан ```post._id```. Без него next/link не сможет открыть страницу в самом верхнем положении.
+У&nbsp;родительского блока должен быть задан ```post._id```. Без него next/link не&nbsp;сможет открыть страницу в&nbsp;самом верхнем положении
