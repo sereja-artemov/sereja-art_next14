@@ -5,7 +5,10 @@ import { Raleway, Open_Sans, Playfair_Display } from 'next/font/google'
 import { Header } from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import NextTopLoader from "nextjs-toploader";
-import ScrollProgressBar from "@/components/ScrollProgressBar/ScrollProgressBar";
+import dynamic from "next/dynamic";
+import Script from "next/script";
+const ScrollTopButton = dynamic(() => import("@/components/ScrollTopButton/ScrollTopButton"));
+const ScrollProgressBar = dynamic(() => import("@/components/ScrollProgressBar/ScrollProgressBar"));
 
 const raleway = Raleway({
   subsets: ['latin'],
@@ -56,6 +59,21 @@ export default function RootLayout({
           <Footer />
           <NextTopLoader height={6} color='#6767ab' />
           <ScrollProgressBar />
+          <ScrollTopButton />
+
+          {/* Чат Битрикс24 Открытые линии */}
+          <Script id="show-banner" strategy="afterInteractive">
+            {`(function (w, d, u) {
+                var s = d.createElement('script');
+                s.async = true;
+                s.src = u + '?' + ((Date.now() / 60000) | 0);
+                var h = d.getElementsByTagName('script')[0];
+                h.parentNode.insertBefore(s, h);
+              })(window,
+                  document,
+                  'https://cdn-ru.bitrix24.ru/b17818108/crm/site_button/loader_1_xrfang.js');`
+            }
+          </Script>
         </body>
       </html>
     </DarkModeProvider>

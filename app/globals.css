@@ -137,6 +137,7 @@ span[data-line] {
   border-left: 4px solid transparent;
 }
 /* rehype-pretty-code КОНЕЦ */
+
 }
 
 
@@ -163,7 +164,10 @@ span[data-line] {
   }
 
   .block-bg {
-    @apply bg-whiteSecondary dark:bg-darkSecondary
+    @apply bg-whiteSecondary dark:bg-darkSecondary;
+  }
+  .b24-widget-button-position-bottom-right {
+    @apply max-sm:!right-3 max-sm:!bottom-10;
   }
 }
 
@@ -204,5 +208,6 @@ span[data-line] {
       );
     background-size: 82px 47px;
   }
+
   
 }
