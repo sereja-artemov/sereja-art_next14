@@ -48,6 +48,7 @@ export function Header() {
   };
 
   useEffect(() => {
+    activateSticky();
     window.addEventListener('scroll', activateSticky);
     return () => {
       window.removeEventListener('scroll', activateSticky);
