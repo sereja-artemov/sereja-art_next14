@@ -20,7 +20,7 @@ const CardsGrid = () => {
       <CardWrapper
         cardLink="/projects"
         cardTitle="Проекты"
-        cssGridClassName="bg-darkSecondary col-span-full lg:col-span-6 flex flex-col text-whiteSecondary"
+        cssGridClassName="bg-darkSecondary col-span-full lg:col-span-6 flex flex-col text-whiteSecondary max-lg:min-h-[300px]"
       >
         <ProjectsBlock />
       </CardWrapper>

@@ -59,7 +59,7 @@ const ProjectsBlock = () => {
                 className={`${!isImageLoading && 'invisible'} w-full h-auto mb-2 rounded-2xl`}
                 src={project.previewImage || project.image}
                 alt={`${project.name} картинка проекта`}
-                sizes="100vw"
+                // sizes="100vw"
                 width={1200}
                 height={675}
                 onLoad={() => setIsImageLoading(true)}></Image>

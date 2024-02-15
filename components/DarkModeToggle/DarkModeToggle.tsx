@@ -6,7 +6,7 @@ function DarkModeToggle() {
 
   return (
     <div className="flex items-center justify-center shrink-0 lg:mr-4">
-            <div className="w-8 h-8 lg:w-10 lg:h-10 max-h-12">
+            <div className="w-10 h-10 max-h-12">
               <DarkModeSwitch
                 sunColor="#0f172a"
                 moonColor="#ededef"

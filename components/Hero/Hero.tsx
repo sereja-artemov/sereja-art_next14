@@ -44,12 +44,16 @@ const Hero = () => {
           </div>
         </div>
         <div className="relative z-10 w-fit">
-          <Image
-            className="max-w-[85px] md:max-w-[119px] mb-2 rounded-full"
-            src={HeroAvatar}
-            alt="аватарка"
-            quality={90}
-          />
+          <Link href="/about">
+            <Image
+              className="max-w-[85px] md:max-w-[119px] mb-2 rounded-full"
+              src={HeroAvatar}
+              alt="аватарка sereja-art"
+              quality={90}
+              placeholder='blur'
+            />
+          </Link>
+          
           <Link className="w-full inline-block align-middle text-center mx-auto px-[.9em] pb-[.55em] py-[.25em] text-xs border-b rounded-full lg:text-sm border-whiteSecondary/30" href="/about">
             Обо мне
           </Link>
