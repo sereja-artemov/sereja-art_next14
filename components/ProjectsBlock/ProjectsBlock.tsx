@@ -5,11 +5,13 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import useWindowSize from '@/hooks/useWindowSize';
 import { projectsData } from '@/data/projectsData';
+import { FullWidthSkeleton } from '../Skeletons/FullWidthSkeleton';
 
 const ProjectsBlock = () => {
   const windowSize = useWindowSize();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isImageLoading, setIsImageLoading] = useState(false);
+  const [sliderCreated, setIsSliderCreated] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
     {
       slideChanged(slider) {
@@ -19,61 +21,51 @@ const ProjectsBlock = () => {
         perView: 1,
         spacing: 20,
       },
+      created() {
+        setIsSliderCreated(true);
+        console.log('created');
+      },
     },
     [
       // add plugins here
-    ]
+    ],
   );
 
   // исправил неправильную ширину слайдов при первоначальной загрузке
-  useEffect(() => {
-    instanceRef?.current?.update();    
-  }, [isImageLoading]);
+  // useEffect(() => {
+  //   instanceRef?.current?.update();
+  // }, [isImageLoading]);
 
   const getCurrentSlideNumber = () => {
-    return (
-      isImageLoading &&
-      instanceRef.current &&
-      instanceRef.current.track.details.abs + 1
-    );
+    return isImageLoading && instanceRef.current && instanceRef.current.track.details.abs + 1;
   };
 
   const getSliderlength = () => {
-    return (
-      isImageLoading &&
-      instanceRef.current &&
-      instanceRef.current.track.details.slides.length
-    );
+    return isImageLoading && instanceRef.current && instanceRef.current.track.details.slides.length;
   };
 
   return (
     <>
-      <div
-        ref={sliderRef}
-        className="flex max-w-full overflow-hidden keen-slider"
-      >
+      {!sliderCreated && <FullWidthSkeleton />}
+
+      <div ref={sliderRef} className={`flex max-w-full overflow-hidden keen-slider`}>
+        
         {projectsData.map((project, index) => {
           return (
-            <div
-              key={index}
-              className="flex flex-col mb-3 keen-slider__slide group"
-            >
+            <div key={index} className="flex flex-col mb-3 keen-slider__slide group w-full">
               {/* фикс вспышки */}
+              {!isImageLoading && <FullWidthSkeleton />}
               <Image
-                className={`${
-                  !isImageLoading && 'invisible'
-                } w-full h-auto mb-2 rounded-2xl`}
+                className={`${!isImageLoading && 'invisible'} w-full h-auto mb-2 rounded-2xl`}
                 src={project.previewImage || project.image}
                 alt={`${project.name} картинка проекта`}
                 sizes="100vw"
                 width={1200}
                 height={675}
-                onLoad={() => setIsImageLoading(true)}
-              ></Image>
+                onLoad={() => setIsImageLoading(true)}></Image>
               {/* подложка с информацией о проекте */}
-              <div
-                className={`relative ease-in duration-200 h-full overflow-auto xl:py-6 py-5 mb-2 px-4 rounded-2xl bg-[#424750]/80`}
-              >
+              {sliderCreated && <div
+                className={`relative ease-in duration-200 h-full overflow-auto xl:py-6 py-5 mb-2 px-4 rounded-2xl bg-[#424750]/80`}>
                 <div className="flex flex-col h-full">
                   <h3 className="mb-2 text-base font-medium leading-normal md:text-xl">
                     {project.name}
@@ -82,20 +74,18 @@ const ProjectsBlock = () => {
                     {project.description}
                   </p>
                 </div>
-              </div>
+              </div>}
+              
             </div>
           );
         })}
       </div>
 
-      {/* счетчик и управление */}
-      <div className="flex items-center justify-between px-2 mt-auto">
+      {sliderCreated && <div className={`flex items-center justify-between px-2 mt-auto`}>
         {/* счетчик */}
         <p className="text-base md:text-lg lg:text-xl">
-          <span className="text-[1.6em] font-medium">
-            {getCurrentSlideNumber()}
-          </span>
-          / {getSliderlength()}
+          <span className="text-[1.6em] font-medium">{getCurrentSlideNumber()}</span>/{' '}
+          {getSliderlength()}
         </p>
         {/* стрелки */}
         <div className="flex flex-wrap gap-5">
@@ -103,11 +93,8 @@ const ProjectsBlock = () => {
             <>
               <button
                 className="disabled:opacity-20"
-                onClick={(e: any) =>
-                  e.stopPropagation() || instanceRef.current?.prev()
-                }
-                disabled={currentSlide === 0}
-              >
+                onClick={(e: any) => e.stopPropagation() || instanceRef.current?.prev()}
+                disabled={currentSlide === 0}>
                 <svg
                   className="rotate-180"
                   stroke="currentColor"
@@ -116,12 +103,10 @@ const ProjectsBlock = () => {
                   viewBox="0 0 24 24"
                   height="2.2em"
                   width="2.2em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                  xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M23.0677 11.9929L18.818 7.75739L17.4061 9.17398L19.2415 11.0032L0.932469 11.0012L0.932251 13.0012L19.2369 13.0032L17.4155 14.8308L18.8321 16.2426L23.0677 11.9929Z"
-                    fill="currentColor"
-                  ></path>
+                    fill="currentColor"></path>
                 </svg>
               </button>
               <button
@@ -129,11 +114,7 @@ const ProjectsBlock = () => {
                 onClick={(e: any) => {
                   e.stopPropagation() || instanceRef.current?.next();
                 }}
-                disabled={
-                  currentSlide ===
-                  instanceRef.current.track.details.slides.length - 1
-                }
-              >
+                disabled={currentSlide === instanceRef.current.track.details.slides.length - 1}>
                 <svg
                   stroke="currentColor"
                   fill="none"
@@ -141,18 +122,17 @@ const ProjectsBlock = () => {
                   viewBox="0 0 24 24"
                   height="2.2em"
                   width="2.2em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                  xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M23.0677 11.9929L18.818 7.75739L17.4061 9.17398L19.2415 11.0032L0.932469 11.0012L0.932251 13.0012L19.2369 13.0032L17.4155 14.8308L18.8321 16.2426L23.0677 11.9929Z"
-                    fill="currentColor"
-                  ></path>
+                    fill="currentColor"></path>
                 </svg>
               </button>
             </>
           )}
         </div>
-      </div>
+      </div>}
+      
     </>
   );
 };
