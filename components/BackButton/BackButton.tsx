@@ -10,7 +10,7 @@ function BackButton() {
     <div
     className={`flex grow mr-1.5 lg:max-w-[250px] shrink-0 p-0.5 lg:p-1 border border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full`}
   >
-    <Link onClick={() => router.back()} href="/" className={`bg-darkPrimary text-whitePrimary dark:bg-whitePrimary dark:text-darkPrimary w-full h-full gap-3 px-3 p-0.5 pr-0.5 lg:pr-1 lg:p-1 lg:px-4 rounded-full flex justify-between items-center`}>
+    <Link onClick={() => router.back()} href="/" className={`bg-darkPrimary text-whitePrimary dark:bg-whitePrimary dark:text-darkPrimary w-full h-full min-h-10 gap-3 px-3 p-0.5 pr-0.5 lg:pr-1 lg:p-1 lg:px-4 rounded-full flex justify-between items-center`}>
       <p className="m-0 lg:mb-[0.1em]">
        Назад
       </p>
