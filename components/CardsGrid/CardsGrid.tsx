@@ -4,6 +4,9 @@ import CardWrapper from '../CardWrapper/CardWrapper';
 import ProjectsBlock from '../ProjectsBlock/ProjectsBlock';
 import PostBlock from '../PostBlock/PostBlock';
 import NotesBlock from '../NotesBlock/NotesBlock';
+import Image from 'next/image';
+import duckImage from '@/public/images/duck.svg';
+import jsIcon from '@/public/images/js-icon.svg';
 
 const CardsGrid = () => {
   return (
@@ -50,13 +53,17 @@ const CardsGrid = () => {
         cssGridClassName="border border-darkPrimary/50 dark:border-whiteSecondary/30 lg:row-span-1 col-span-full lg:col-span-6 flex flex-col"
         isBgTransparent
       >
-        <span className='m-auto text-sm'>Тут ничего нет.</span>
+        <span className='m-auto text-sm flex'>
+          <Image className='max-w-[200px] w-[60%] m-auto' src={duckImage} alt='картинка утенка' />
+        </span>
       </CardWrapper>
       <CardWrapper
         cssGridClassName="border border-darkPrimary/50 dark:border-whiteSecondary/30 lg:row-span-1 col-span-full lg:col-start-7 flex flex-col"
         isBgTransparent
       >
-        <span className='m-auto text-sm'>И тут ничего нет.</span>
+        <span className='m-auto text-sm flex text-secondTextColor'>
+          а тут ничего нет.
+        </span>
       </CardWrapper>
     </section>
   );

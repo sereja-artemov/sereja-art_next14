@@ -59,7 +59,7 @@ export default function PostCard(post: PostType) {
           {post.excerpt}
         </p>
         <Link
-          className="flex items-center justify-between gap-3 px-5 py-1 mt-auto font-semibold uppercase border rounded-xl lg:text-base border-blockBorderColorLight dark:border-blockBorderColorDark"
+          className="flex items-center justify-between default-btn-color gap-3 px-5 py-1 mt-auto font-semibold uppercase border rounded-xl lg:text-base border-blockBorderColorLight dark:border-blockBorderColorDark"
           href={post.url}
         >
           <p>Читать</p>

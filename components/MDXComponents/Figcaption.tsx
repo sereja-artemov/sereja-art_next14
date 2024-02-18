@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import ZoomImage from './ZoomImage/ZoomImage';
 
 interface figcaptionProps {
   src: string;
@@ -9,7 +10,9 @@ interface figcaptionProps {
 export default function Figcaption({ src, caption, alt }: figcaptionProps) {
   if (caption !== undefined) {
     return (
-      <figure>
+      <>
+        {/* <ZoomImage src={src} alt={alt} /> */}
+        <figure>
         <Image
           width={1920}
           height={1080}
@@ -20,6 +23,9 @@ export default function Figcaption({ src, caption, alt }: figcaptionProps) {
         />
         <figcaption className='text-center'>{caption}</figcaption>
       </figure>
+      
+      </>
+      
     );
   } else {
     return (

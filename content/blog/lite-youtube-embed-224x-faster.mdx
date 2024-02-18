@@ -1,18 +1,27 @@
 ---
 type: Post
-title: lite-youtube-embed
-date: 2029-09-04
-published: false
+title: Встраивайте YouTube видео с помощью Lite YouTube Embed
+date: 2024-02-18
+published: true
 category: other
 keywords: keywords
-excerpt: Создавайте видеоролики с повышенным вниманием к визуальным характеристикам. Этот пользовательский элемент отображает точно так же, как реальный, но примерно в 224 раза быстрее.
+excerpt: Используйте Lite YouTube Embed вместо обычного YouTube iFrame, это примерно в 224 раза быстрее. 
 coverImage: 
 ---
 
-https://github.com/paulirish/lite-youtube-embed
+## Минусы стандартного способа через iframe
+Стандартные embed-скрипты для YouTube очень тяжелые и&nbsp;весят сотни килобайт. Весь этот ком скриптов загружается сразу и&nbsp;сильно тормозит загрузку страницы из-за этого снижается самооценка страницы в&nbsp;Google PageSpeed Insights.
 
-<a href='https://github.com/paulirish/lite-youtube-embed' target='_blank'>lite-youtube-embed</a>
+## Плюсы способа через lite-youtube-embed
+Для поддержания высокой самооценки страниц, придумали lite-youtube-embed, который визуально выглядит как стандартное решение, но&nbsp;загружается примерно в&nbsp;224 раз быстрее и&nbsp;имеет ряд преимуществ:
 
-Создавайте видеоролики с&nbsp;повышенным вниманием к&nbsp;визуальным характеристикам. Этот пользовательский элемент отображает точно так&nbsp;же, как реальный, но&nbsp;примерно в&nbsp;224 раза быстрее.
+- Скрипты весят меньше&nbsp;&mdash; не&nbsp;более 16&nbsp;Кбайт!
+- Можем поставить картинку для обложки видео
+- Скрипты загружаются не&nbsp;сразу
+- Можем указывать разные параметры для управления поведением и&nbsp;внешним видом
 
+## Пример встроенного видео с помощью lite-youtube-embed
 <YouTubeEmbed id="9bZkp7q19f0" title="test" />
+
+
+Ссылка на npm пакет: <a href='https://www.npmjs.com/package/lite-youtube-embed' target='_blank'>lite-youtube-embed</a>

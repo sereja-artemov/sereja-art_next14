@@ -166,8 +166,9 @@ span[data-line] {
   .block-bg {
     @apply bg-whiteSecondary dark:bg-darkSecondary;
   }
-  .b24-widget-button-position-bottom-right {
-    @apply max-sm:!right-3 max-sm:!bottom-10;
+
+  .default-btn-color {
+    @apply bg-whiteSecondary dark:bg-darkSecondary hover:bg-darkPrimary hover:text-whitePrimary dark:hover:bg-whitePrimary dark:hover:text-darkPrimary;
   }
 }
 
@@ -209,5 +210,7 @@ span[data-line] {
     background-size: 82px 47px;
   }
 
-  
+  .b24-widget-button-position-bottom-right {
+    @apply max-sm:!right-3 max-sm:!bottom-10;
+  }
 }
