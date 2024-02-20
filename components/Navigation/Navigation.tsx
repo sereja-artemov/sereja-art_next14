@@ -66,7 +66,7 @@ const Navigation = () => {
       </div>
         {/* Мобильное меню */}
         {isMenuOpen && (
-          <div className='fixed z-50 flex flex-col justify-between w-full h-full p-4 py-8 overflow-auto -translate-x-1/2 border top-1 left-1/2 bg-whitePrimary dark:bg-darkPrimary block-border lg:hidden rounded-3xl'>
+          <div className='fixed z-[9999] flex flex-col justify-between w-full h-full px-7 py-8 overflow-auto -translate-x-1/2 border top-1 left-1/2 bg-whitePrimary dark:bg-darkPrimary block-border lg:hidden rounded-3xl'>
             <ul>
               {navigationRoutes.map((item, index) => (
                 <li
@@ -85,7 +85,7 @@ const Navigation = () => {
                 </li>
               ))}
             </ul>
-            <button className='flex items-center justify-center px-5 py-4 m-0 mt-5 text-2xl uppercase rounded-full last:mb-0 block-border bg-whiteSecondary dark:bg-darkSecondary font-boss' onClick={() => setIsMenuOpen(false)} type="button">❌ Закрыть</button>
+            <button className='flex items-center justify-center px-5 py-4 m-0 mt-5 text-2xl uppercase rounded-full last:mb-0 block-border bg-whiteSecondary dark:bg-darkSecondary font-boss' onClick={() => setIsMenuOpen(false)} type="button">Закрыть</button>
           </div>
 
         )}

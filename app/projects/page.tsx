@@ -24,6 +24,8 @@ function Projects() {
               height={512}
               src={project.previewImage || project.image}
               alt={`${project.name} картинка проекта`}
+              placeholder='blur'
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOsrQcAAX8A/n6ayNMAAAAASUVORK5CYII="
             />
 
             <div className="px-3">
