@@ -18,6 +18,7 @@ export default function Figcaption({ src, caption, alt }: figcaptionProps) {
           height={1080}
           src={src}
           alt={alt}
+          quality={85}
           placeholder={'blur'}
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOsrQcAAX8A/n6ayNMAAAAASUVORK5CYII="
         />
@@ -34,6 +35,7 @@ export default function Figcaption({ src, caption, alt }: figcaptionProps) {
         height={1080}
         src={src}
         alt={alt}
+        quality={85}
         placeholder={'blur'}
         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOsrQcAAX8A/n6ayNMAAAAASUVORK5CYII="
       />
