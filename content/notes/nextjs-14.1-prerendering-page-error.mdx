@@ -12,19 +12,15 @@ keywords: nextjs, nextjs14, nextjs prerendering error
 
 После запуска сборки проекта, получаем ошибку:
 
-<CodeTitle title='Ошибка после запуска npm run build' />
-```html
-
+<CodeTitle title='Ошибка после запуска npm run build' lang="bash" />
+```txt
 Error occurred prerendering page "/_not-found". Read more: https://nextjs.org/docs/messages/prerender-error
 
-
  ⨯ useSearchParams() should be wrapped in a suspense boundary at page "/contacts". Read more: https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout
-
 ```
 
-<CodeTitle title='Страницы с ошибками' />
-```html
-
+<CodeTitle title='Страницы с ошибками' lang="bash" />
+```txt
 > Export encountered errors on following paths:
         /_not-found
         /about/page: /about
@@ -46,7 +42,6 @@ Error occurred prerendering page "/_not-found". Read more: https://nextjs.org/do
         /page: /
         /projects/page: /projects
         /services/page: /services
-
 ```
 
 ## Проблема
@@ -63,7 +58,7 @@ Error occurred prerendering page "/_not-found". Read more: https://nextjs.org/do
 В моем случае, я использовал клиентский компонент для передачи праметров в Яндекс Метрику в своем `layout.tsx`
 
 <CodeTitle title='components/YandexMetrika.jsx' lang="js" />
-```html
+```jsx
 'use client';
 
 import { useEffect } from 'react';
@@ -81,9 +76,9 @@ export default function YandexMetrika() {
   return null;
 }
 ```
-
+ 
 <CodeTitle title='app/layout.tsx' lang="js" />
-```html
+```jsx
 import { Suspense } from "react";
 import YandexMetrika from "@/components/YandexMetrika/YandexMetrika";
 
