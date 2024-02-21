@@ -125,7 +125,7 @@
  }
 
  figure[data-rehype-pretty-code-figure] {
-  margin: 0;
+  margin-top: 0;
  }
 
  [data-highlighted-chars] {
