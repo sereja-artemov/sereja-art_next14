@@ -1,4 +1,4 @@
-import { BsFileEarmarkCodeFill } from 'react-icons/bs';
+import { BsFileEarmarkCodeFill, BsFiletypeScss } from 'react-icons/bs';
 import {
   SiCss3,
   SiPython,
@@ -24,6 +24,9 @@ export default function CodeTitle({ title, lang }: CodeTitleProps) {
       break;
     case 'css':
       Icon = SiCss3;
+      break;
+    case 'scss':
+      Icon = BsFiletypeScss;
       break;
     case 'js':
       Icon = IoLogoJavascript;
