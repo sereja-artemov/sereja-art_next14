@@ -8,7 +8,7 @@ excerpt: Подключение счетчика Яндекс.Метрики к 
 coverImage: http://tech.sereja-art.ru/upload/blogs/podkluchenie-yandex-metriki-nextjs/podkluchenie-yandex-metriki-nextjs-preview.jpg
 ---
 
-Нам нужно вставить код счетчика в шаблон, чтобы он присутствовал на всех страницах сайта.
+Нам нужно вставить код счетчика в&nbsp;шаблон, чтобы он&nbsp;присутствовал на&nbsp;всех страницах сайта.
 
 <CodeTitle title='Код счетчика Яндекс Метрики для NextJS' lang='js' />
 ```js /XXXXXXXX/ /counter/
@@ -34,7 +34,7 @@ coverImage: http://tech.sereja-art.ru/upload/blogs/podkluchenie-yandex-metriki-n
 
 ## Используя Pages Router
 
-В случае с использованием Pages Router, я вставляю счетчик яндекс метрики в <code className="inline">\_document.tsx</code>.
+В&nbsp;случае с&nbsp;использованием Pages Router, я&nbsp;вставляю счетчик яндекс метрики в <code className="inline">\_document.tsx</code>.
 
 {/* <Figcaption
   src="http://tech.sereja-art.ru/upload/blogs/podkluchenie-yandex-metriki-nextjs/podkluchenie-yandex-metriki-nextjs-2.png"
@@ -75,7 +75,7 @@ export default function Document() {
 }
 ```
 
-У меня один общий макет ```<Layout />``` для всего сайта, поэтому я создал Custom App и обернул его этим макетом.
+У&nbsp;меня один общий макет ```<Layout />``` для всего сайта, поэтому я&nbsp;создал Custom App и&nbsp;обернул его этим макетом.
 
 <CodeTitle title='src\pages\_app.tsx' lang='js' />
 ```js {71, 73}
@@ -158,7 +158,7 @@ return (
 }
 ```
 
-Подробнее про единый Layout и Custom App в документации: <a href="https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts">https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts</a>
+Подробнее про единый Layout и&nbsp;Custom App в&nbsp;документации: <a href="https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts">https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts</a>
 
 <CodeTitle title='src\components\Layout\Layout.tsx' lang='js' />
 ```js {22}
@@ -194,7 +194,7 @@ return (
 ); }
 ```
 
-В макет вставляю компонент ```<YandexMetrika />```, который будет отправлять данные в метрику при изменении URL-адреса или параметров в нем.
+В&nbsp;макет вставляю компонент ```<YandexMetrika />```, который будет отправлять данные в&nbsp;метрику при изменении URL-адреса или параметров в&nbsp;нем.
 
 <CodeTitle title='src\components\YandexMetrika\YandexMetrika.jsx' lang='js' />
 ```js
@@ -219,7 +219,7 @@ useEffect(() => {
 
 ## Используя App Router
 
-В случае с использованием App Router, вставляем счетчик яндекс метрики в файл <code>layout.tsx</code> перед закрывающим тегом <code>body</code>.
+В&nbsp;случае с&nbsp;использованием App Router, вставляем счетчик яндекс метрики в&nbsp;файл <code>layout.tsx</code> перед закрывающим тегом <code>body</code>.
 
 {/* <Figcaption
   src="http://tech.sereja-art.ru/upload/blogs/podkluchenie-yandex-metriki-nextjs/podkluchenie-yandex-metriki-nextjs-1.png"
@@ -267,7 +267,9 @@ export default function RootLayout({
               });`
             }
           </Script>
-          <YandexMetrika />
+          <Suspense fallback={<></>}>
+            <YandexMetrika />
+          </Suspense>
           <NextTopLoader height={4} />
           <Header />
           <main>{children}</main>
@@ -279,7 +281,7 @@ export default function RootLayout({
 }
 ```
 
-Туда же импортируем компонент, который будет отправлять данные в метрику при изменении URL-адреса или параметров в нем и добавляем в наш layout.
+Туда&nbsp;же импортируем компонент, который будет отправлять данные в&nbsp;метрику при изменении URL-адреса или параметров в&nbsp;нем и&nbsp;добавляем в&nbsp;наш Layout. Для NextJS 14&nbsp;оборачиваем компонент в&nbsp;Suspense, чтобы избежать prerendering Error.
 
 <CodeTitle title='components\YandexMetrika\YandexMetrika.jsx' lang='js' />
 ```js
