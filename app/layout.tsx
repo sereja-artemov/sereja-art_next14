@@ -8,6 +8,7 @@ import NextTopLoader from "nextjs-toploader";
 import dynamic from "next/dynamic";
 import Script from "next/script";
 import YandexMetrika from "@/components/YandexMetrika/YandexMetrika";
+import { Suspense } from "react";
 const ScrollTopButton = dynamic(() => import("@/components/ScrollTopButton/ScrollTopButton"));
 const ScrollProgressBar = dynamic(() => import("@/components/ScrollProgressBar/ScrollProgressBar"));
 
@@ -54,7 +55,9 @@ export default function RootLayout({
               });`
             }
           </Script>
-          <YandexMetrika />
+          <Suspense fallback={<></>}>
+            <YandexMetrika />
+          </Suspense>
           <Header />
           <main>{children}</main>
           <Footer />
