@@ -146,10 +146,6 @@ span[data-line] {
     @apply inline-block px-[.9em] pb-[.35em] py-[.25em] text-center align-middle border rounded-full;
   }
 
-  .border-custom {
-    @apply border-darkPrimary/50 dark:dark:border-whitePrimary;
-  }
-
   .block-border {
     @apply border border-[#efefef] dark:border-[#464646];
   }
@@ -157,6 +153,7 @@ span[data-line] {
   .block-title {
     @apply text-xl md:text-3xl leading-[1.4] uppercase font-black mt-0 mb-8 mx-0 font-boss;
   }
+  
   .blog-title-link {
     display: inline-flex;
     align-items: center;

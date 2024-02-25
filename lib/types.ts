@@ -47,6 +47,8 @@ export type PostType = {
   slug: string;
   date: string;
   excerpt: string;
+  category?: string | string[];
+  tags?: string | string[];
   keywords: string[];
   body: string;
   tableOfContents: TableOfContents[];
@@ -70,6 +72,8 @@ export type NoteType = {
   excerpt: string;
   keywords: string[];
   body: string;
+  category?: string | string[];
+  tags?: string | string[];
   // tableOfContents: TableOfContents[];
   url: string;
   // readingTime: { readingTimeText: string, wordsQuantityStr: string },
