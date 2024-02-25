@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import FilterPosts from '../FilterPosts/FilterPosts';
 import { NoteType } from '@/lib/types';
 import getCategories from '@/lib/getCategories';
-import Note from '../Note/Note';
+import NoteCard from '../NoteCard/NoteCard';
 
 interface CategoryType {
   category: string;
@@ -43,7 +43,7 @@ const NotesList = ({ posts }: { posts: NoteType[] }) => {
       />
 
       <div className="inline-flex flex-wrap gap-2">
-        {filteredPosts.map((note, index) => note.published && <Note key={index} {...note} />)}
+        {filteredPosts.map((note, index) => note.published && <NoteCard key={index} {...note} />)}
       </div>
     </>
   );
