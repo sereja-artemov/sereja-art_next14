@@ -112,6 +112,9 @@ export const metadata: Metadata = {
       },
     ],
   },
+  other: {
+    ['yandex-verification']: '2b752f09221380d0',
+  },
   manifest: '/manifest.json',
   robots: {
     index: true,
