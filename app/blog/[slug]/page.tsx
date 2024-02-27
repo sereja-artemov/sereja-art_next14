@@ -164,7 +164,7 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL('https://sereja-art.ru'),
-    title,
+    title: `${title} — sereja-art`,
     description,
     keywords,
     openGraph: {

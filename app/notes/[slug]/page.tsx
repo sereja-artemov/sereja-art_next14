@@ -113,7 +113,7 @@ export async function generateMetadata({ params: { slug } }: IProps): Promise<Me
   const description = excerpt;
 
   return {
-    title,
+    title: `${title} — sereja-art`,
     description,
     keywords,
     openGraph: {
