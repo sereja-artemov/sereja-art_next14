@@ -28,6 +28,8 @@ export default function getCategories(posts: PostType[] | NoteType[]) {
           return { category, renamedCategory: 'SEO' };
       case 'bitrix':
         return { category, renamedCategory: '1C-Битрикс' };
+        case 'figma':
+          return { category, renamedCategory: 'Figma' };
       default:
         return { category, renamedCategory: category };
     }
