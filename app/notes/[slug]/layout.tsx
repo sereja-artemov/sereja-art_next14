@@ -1,12 +1,12 @@
 import DonationBlog from "@/components/DonationComponents/DonationBlog";
 
-export default function BlogPageLayout({
+export default function SlugPageLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return <>{children}
-    <section className="pt-8">
+    <section className="pt-10">
       <DonationBlog />
     </section>
   </>;
