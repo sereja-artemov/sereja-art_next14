@@ -128,4 +128,8 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  openGraph: {
+    siteName: 'sereja-art',
+    type: 'website',
+  },
 };
