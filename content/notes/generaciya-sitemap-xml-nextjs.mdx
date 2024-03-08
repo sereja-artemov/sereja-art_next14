@@ -1,15 +1,17 @@
 ---
 type: Note
-date: 2024-03-03
-title: Как сгенерировать sitemap.xml в Next.JS
-excerpt: Динамически создаю карту сайта sitemap.xml на Next.JS
+date: 2024-03-07
+title: Как сгенерировать sitemap.xml в Next.js
+excerpt: Динамически создаю карту сайта sitemap.xml на Next.js
 published: true
 category: [web-dev, seo, nextjs]
 keywords: sitemap.xml, sitemap nextjs, карта сайта nextjs
 ---
 
-Файл sitemap.xml или в простонародье - карта сайта - помогает поисковым роботам индексировать сайт, с помощью нее робот понимает какие страницы более важные, где они находятся и когда были обновлены.
-У меня блог и когда-нибудь на сайте будет много полезных и интересных статей, нуу... хочется в это верить. Можно каждый раз обновлять sitemap.xml руками, но это такое, сами понимаете... да и зачем, когда в Next.JS есть возможность автоматически генерировать карту сайта.
+Файл sitemap.xml или в&nbsp;простонародье&nbsp;&mdash; карта сайта&nbsp;&mdash; помогает поисковым роботам индексировать сайт. Поисковый робот смотрит на&nbsp;карту и&nbsp;понимает какие страницы более важные, где они находятся и&nbsp;когда были обновлены.
+
+Иногда я&nbsp;добавляю новые записи и&nbsp;заметки в&nbsp;блог, и&nbsp;их&nbsp;нужно индексировать.
+Можно каждый раз обновлять `sitemap.xml` руками, но&nbsp;это такое, сами понимаете... да&nbsp;и&nbsp;зачем, когда в&nbsp;Next.js есть возможность автоматически генерировать карту сайта.
 
 <CodeTitle title='app/sitemap.ts' lang="ts" />
 ```ts
@@ -98,5 +100,7 @@ This XML file does not appear to have any style information associated with it. 
 </urlset>
 ```
 Можно еще добавить `changeFrequency` и `priority`, но я забил.
+
 Официальная документация тут: <a href="https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap" target="_blank" rel="nofollow">https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap</a>
+
 Успехов и хорошего дня!
