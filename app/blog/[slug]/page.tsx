@@ -30,6 +30,8 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
   const structuredData: WithContext<Article> = {
     '@context': 'https://schema.org',
     '@type': 'Article',
+    "@id": post.url,
+    "text": post.body,
     headline: post.title,
     url: `${process.env.HOST}/blog/${params.slug}/`,
     image: {
