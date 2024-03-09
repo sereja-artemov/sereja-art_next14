@@ -2,15 +2,23 @@
 title: Подключение счетчика Яндекс.Метрики в Next.JS
 date: 2023-06-24
 published: true
-category: other
+category: [other, seo]
 keywords: nextjs, яндекс метрика, счетчик яндекс метрики, подключение счетчика яндекс метрики
 excerpt: Подключение счетчика Яндекс.Метрики к сайту на Next.JS
 coverImage: http://tech.sereja-art.ru/upload/blogs/podkluchenie-yandex-metriki-nextjs/podkluchenie-yandex-metriki-nextjs-preview.jpg
 ---
 
-Нам нужно вставить код счетчика в&nbsp;шаблон, чтобы он&nbsp;присутствовал на&nbsp;всех страницах сайта.
+Нам нужно вставить код счетчика в&nbsp;шаблон, чтобы он&nbsp;присутствовал на&nbsp;всех страницах сайта. Я&nbsp;добавил пример подключения для `Pages Router` и `App Router`.
 
-<CodeTitle title='Код счетчика Яндекс Метрики для NextJS' lang='js' />
+При инициализации счетчика не&nbsp;забудьте указать `defer: true`, это отключит автоматическую отправку данных о&nbsp;просмотрах. Фиксировать показы страниц будем с&nbsp;помощью функции `hit`, ее&nbsp;нужно вызывать каждый раз, когда посчитаем, что страница изменилась.
+
+Далее буду использовать `hit` в&nbsp;компоненте `YandexMetrika()` и&nbsp;фиксировать показы при изменении url-адреса или параметров в&nbsp;нем.
+
+## Код счетчика
+
+Для подключения используем компонент `<Script />`.
+
+<CodeTitle title='Код счетчика Яндекс Метрики для Next.js' lang='js' />
 ```js /XXXXXXXX/ /counter/
 <Script id="metrika-counter" strategy="afterInteractive">
   {`(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -34,12 +42,7 @@ coverImage: http://tech.sereja-art.ru/upload/blogs/podkluchenie-yandex-metriki-n
 
 ## Используя Pages Router
 
-В&nbsp;случае с&nbsp;использованием Pages Router, я&nbsp;вставляю счетчик яндекс метрики в <code className="inline">\_document.tsx</code>.
-
-{/* <Figcaption
-  src="http://tech.sereja-art.ru/upload/blogs/podkluchenie-yandex-metriki-nextjs/podkluchenie-yandex-metriki-nextjs-2.png"
-  alt="код счетчика яндекс метрики pages router NextJS"
-/> */}
+В&nbsp;случае с&nbsp;использованием Pages Router, я&nbsp;вставляю счетчик яндекс метрики в `_document.tsx`.
 
 <CodeTitle title='src\pages\_document.tsx' lang='js' />
 ```js {11-26} /XXXXXXXX/
@@ -78,7 +81,7 @@ export default function Document() {
 У&nbsp;меня один общий макет ```<Layout />``` для всего сайта, поэтому я&nbsp;создал Custom App и&nbsp;обернул его этим макетом.
 
 <CodeTitle title='src\pages\_app.tsx' lang='js' />
-```js {70, 72}
+```js {35, 37}
 import '@/styles/utils/normalize.css'
 import '@/styles/_variables.scss'
 import '@/styles/globals.scss'
@@ -93,45 +96,10 @@ import { useRouter } from 'next/router';
 import NProgress from 'nprogress';
 import "nprogress/nprogress.css";
 import SEO from "@/components/SEO/SEO";
-
-const raleway = Raleway({
-  style: ['normal'],
-  subsets: ['cyrillic', 'latin'],
-  fallback: ['open-sans', 'system-ui', 'arial']
-});
-const roboto = Roboto({
-  weight: ['400', '500', '700'],
-  style: ['normal', 'italic'],
-  subsets: ['latin', 'cyrillic'],
-  fallback: ['open-sans', 'system-ui', 'arial']
-});
-
-/_ Progressbar Configurations _/
-NProgress.configure({
-  easing: "ease",
-  speed: 500,
-  showSpinner: false,
-});
+// ...other code
 
 export default function App({Component, pageProps}: AppProps) {
-
-const router = useRouter();
-
-useEffect(() => {
-const start = () => NProgress.start();
-const end = () => NProgress.done();
-
-    router.events.on("routeChangeStart", start);
-    router.events.on("routeChangeComplete", end);
-    router.events.on("routeChangeError", end);
-
-    return () => {
-      router.events.off("routeChangeStart", start);
-      router.events.off("routeChangeComplete", end);
-      router.events.off("routeChangeError", end);
-    }
-
-}, [router.events])
+// ...other code
 
 return (
 
@@ -158,7 +126,7 @@ return (
 }
 ```
 
-Подробнее про единый Layout и&nbsp;Custom App в&nbsp;документации: <a href="https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts">https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts</a>
+Подробнее про единый Layout и&nbsp;Custom App в&nbsp;документации: <a href="https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts" target="_blank" rel="nofollow">https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts</a>
 
 <CodeTitle title='src\components\Layout\Layout.tsx' lang='js' />
 ```js {22}
@@ -219,12 +187,7 @@ useEffect(() => {
 
 ## Используя App Router
 
-В&nbsp;случае с&nbsp;использованием App Router, вставляем счетчик яндекс метрики в&nbsp;файл <code>layout.tsx</code> перед закрывающим тегом <code>body</code>.
-
-{/* <Figcaption
-  src="http://tech.sereja-art.ru/upload/blogs/podkluchenie-yandex-metriki-nextjs/podkluchenie-yandex-metriki-nextjs-1.png"
-  alt="код счетчика яндекс метрики app router NextJS"
-/> */}
+В&nbsp;случае с&nbsp;использованием App Router, вставляем счетчик яндекс метрики в&nbsp;файл `layout.tsx` перед закрывающим тегом `body`.
 
 <CodeTitle title='app\layout.tsx' lang='js' />
 ```js {24-39}
@@ -281,7 +244,7 @@ export default function RootLayout({
 }
 ```
 
-Туда&nbsp;же импортируем компонент, который будет отправлять данные в&nbsp;метрику при изменении URL-адреса или параметров в&nbsp;нем и&nbsp;добавляем в&nbsp;наш Layout. Для NextJS 14&nbsp;оборачиваем компонент в&nbsp;Suspense, чтобы избежать prerendering Error.
+Туда&nbsp;же импортируем компонент, который будет отправлять данные в&nbsp;метрику при изменении URL-адреса или параметров в&nbsp;нем и&nbsp;добавляем в&nbsp;наш Layout. Для Next.js 14&nbsp;оборачиваем компонент в&nbsp;`<Suspense>`, чтобы избежать prerendering Error.
 
 <CodeTitle title='components\YandexMetrika\YandexMetrika.jsx' lang='js' />
 ```js
@@ -303,3 +266,5 @@ export default function YandexMetrika() {
   return null
 }
 ```
+
+Официальная документация Яндекса по&nbsp;установке и&nbsp;настройке счетчика для SPA-сайтов: <a href="https://yandex.ru/support/metrica/code/counter-spa-setup.html" target="_blank" rel="nofollow">https://yandex.ru/support/metrica/code/counter-spa-setup.html</a>
