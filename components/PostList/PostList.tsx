@@ -59,19 +59,22 @@ const PostList = ({ posts }: { posts: PostType[] }) => {
 
   return (
     <>
-      <form className="mb-4 max-w-[750px] mx-auto flex md:text-4xl text-xl items-center gap-1">
+      <form className="mb-4 max-w-[750px] mx-auto flex md:text-4xl text-xl items-center gap-1 relative">
           <input
             onChange={searchPosts}
             value={searchQuery}
             type="search"
             id="default-search"
-            className="w-full py-[.4em] leading-none px-[1em] border border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full bg-whiteSecondary dark:text-whitePrimary dark:bg-darkSecondary"
+            className="w-full py-[.4em] leading-none px-[1em] border border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full bg-whiteSecondary md:pr-[75px] pr-[45px] dark:text-whitePrimary dark:bg-darkSecondary"
             placeholder="Начните искать и вы найдете..."
             required
           />
-          <button onClick={() => setSearchQuery('')} type="button" className="border hover:bg-whiteSecondary dark:hover:bg-darkSecondary border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full aspect-square h-full">
-            <IoCloseOutline size={40} />
-          </button>
+
+
+          {searchQuery && <button onClick={() => setSearchQuery('')} type="button" className="border absolute md:right-5 bg-whiteSecondary dark:bg-darkSecondary border-darkPrimary/50 dark:border-whiteSecondary/30 rounded-full aspect-square right-[.35rem] h-[2.1rem] md:h-10">
+            <IoCloseOutline size={`100%`} />
+          </button>}
+          
       </form>
 
       <FilterPosts
