@@ -1,23 +1,6 @@
 import { ProjectType } from '@/lib/types';
 
 export const projectsData: ProjectType[] = [
-  // {
-  //   name: 'Комплексный маркетинг для компании Промматик',
-  //   description:
-  //     'Помог мощно стартануть с помощью сайта и маркетинговых инструментов. Настроил контекстную рекламу и интеграцию с CRM-системой',
-  //   date: new Date('2017-01-26'),
-  //   cost: 123,
-  //   links: {
-  //     detailLink: '',
-  //     githubLink: '',
-  //     buildLink: '',
-  //   },
-  //   image: 'http://tech.sereja-art.ru/upload/projects/prommatic_1024.webp',
-  //   previewImage: '',
-  //   tools: ['1C-Bitrix', 'Aspro', 'SEO', 'Битрикс24', 'Bicall'],
-  //   year: 2023,
-  //   active: true,
-  // },
   {
     name: 'Комплексный маркетинг для компании Промматик',
     description:
@@ -25,9 +8,7 @@ export const projectsData: ProjectType[] = [
     date: new Date('2017-01-26'),
     cost: 123,
     links: {
-      detailLink: '',
-      githubLink: '',
-      buildLink: '',
+      buildLink: 'https://prommatic.ru',
     },
     image: 'http://tech.sereja-art.ru/upload/projects/prommatic_1024.webp',
     previewImage: 'http://tech.sereja-art.ru/upload/projects/prommatic_1024.webp',
