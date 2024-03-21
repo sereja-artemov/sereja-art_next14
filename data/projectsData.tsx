@@ -30,7 +30,7 @@ export const projectsData: ProjectType[] = [
       buildLink: '',
     },
     image: 'http://tech.sereja-art.ru/upload/projects/prommatic_1024.webp',
-    previewImage: '',
+    previewImage: 'http://tech.sereja-art.ru/upload/projects/prommatic_1024.webp',
     tools: ['1C-Bitrix', 'Aspro', 'SEO', 'Битрикс24', 'Bicall'],
     year: 2023,
     active: true,
