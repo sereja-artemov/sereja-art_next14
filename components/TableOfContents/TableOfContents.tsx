@@ -44,7 +44,7 @@ function TableOfContents({ post }: { post: PostType | any }) {
         isTocActive ? 'max-lg:translate-y-0' : 'max-lg:translate-y-full'
       } lg:sticky z-10 transition-transform lg:border-none lg:top-[120px] lg:pr-5 fixed left-0 bottom-0 w-full max-lg:bg-whiteSecondary/50 max-lg:dark:bg-darkSecondary/50 border border-blockBorderColorLight dark:border-blockBorderColorDark`}
     >
-      <nav className={`max-lg:px-5 max-lg:py-6 max-lg:max-h-[81vh] max-lg:overflow-auto relative max-lg:bg-whiteSecondary max-lg:dark:bg-darkSecondary`}>
+      <nav className={`max-lg:px-5 max-lg:py-6 max-lg:max-h-[60vh] max-lg:overflow-auto relative max-lg:bg-whiteSecondary max-lg:dark:bg-darkSecondary`}>
         <div className="mb-1 mt-[7px] text-base font-medium">Содержание</div>
         <ul className="max-h-[70vh] overflow-y-auto py-2 text-sm text-secondTextColor dark:text-secondTextColorDark max-lg:color-inherit max-lg:max-h-[50%] overflow-auto">
           {post.tableOfContents.map(
