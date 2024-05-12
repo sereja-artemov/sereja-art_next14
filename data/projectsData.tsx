@@ -5,7 +5,7 @@ export const projectsData: ProjectType[] = [
     name: 'Комплексный маркетинг для компании Промматик',
     description:
       'Помог мощно стартануть с помощью сайта и маркетинговых инструментов. Настроил контекстную рекламу и интеграцию с CRM-системой',
-    date: new Date('2017-01-26'),
+    date: new Date('2022-10-26'),
     cost: 123,
     links: {
       buildLink: 'https://prommatic.ru',
@@ -13,14 +13,14 @@ export const projectsData: ProjectType[] = [
     image: 'http://tech.sereja-art.ru/upload/projects/prommatic_1024.webp',
     previewImage: 'http://tech.sereja-art.ru/upload/projects/prommatic_1024.webp',
     tools: ['1C-Bitrix', 'Aspro', 'SEO', 'Битрикс24', 'Bicall'],
-    year: 2023,
+    year: 2022,
     active: true,
   },
   {
     name: 'Промышленные сварочные роботы GSK - компания Техновелд',
     description:
       'Провел маркетинговое исследование, создал дизайн и сверстал на Tilda. Подключил необходимые виджеты и маркетинговые сервисы.',
-    date: new Date('2020-01-01'),
+    date: new Date('2022-09-01'),
     cost: 123,
     links: {
       buildLink: 'https://robot.tweld.ru',
@@ -28,7 +28,7 @@ export const projectsData: ProjectType[] = [
     image: 'http://tech.sereja-art.ru/upload/projects/tweld_robot_1280x720.jpg',
     previewImage: '',
     tools: ['HTML', 'CSS', 'JS', 'Tilda', 'Bitrix24', 'Bicall'],
-    year: 2020,
+    year: 2022,
     active: true,
   },
 
@@ -51,7 +51,7 @@ export const projectsData: ProjectType[] = [
     name: 'Калькулятор семейного бюджета',
     description:
       'Финансовый вопрос – важный аспект семейной жизни. Многие пары расстаются из-за разногласий в формировании бюджета, а ведь коммуналку проще платить вдвоем. Иначе, зачем оно всё?',
-    date: new Date('2017-01-26'),
+    date: new Date('2022-01-26'),
     cost: 123,
     links: {
       detailLink: '',
@@ -64,14 +64,14 @@ export const projectsData: ProjectType[] = [
     previewImage:
       'http://tech.sereja-art.ru/upload/projects/family-budget-calculator-960x540.jpg',
     tools: ['HTML', 'CSS', 'JS', 'React', 'Дизайн'],
-    year: 2023,
+    year: 2022,
     active: true,
   },
   {
     name: 'CakeDreams - сайт кондитерской',
     description:
       'Разработал с нуля сайт кондитерской. Прототипирование, дизайн-макет, верстка, программирование.',
-    date: new Date('2017-01-26'),
+    date: new Date('2020-01-26'),
     cost: 123,
     links: {
       detailLink: '',
@@ -82,7 +82,7 @@ export const projectsData: ProjectType[] = [
     previewImage:
       'http://tech.sereja-art.ru/upload/projects/cakedreams_1280x720.png',
     tools: ['HTML', 'CSS', 'JS', 'Photoshop'],
-    year: 2023,
+    year: 2020,
     active: true,
   },
 
@@ -90,7 +90,7 @@ export const projectsData: ProjectType[] = [
     name: 'AntFarm - домашняя муравьиная ферма',
     description:
       'Провел маркетинговое исследование, разработал прототип и дизайн-макет сайта, сверстал и запустил в работу.',
-    date: new Date('2017-01-26'),
+    date: new Date('2019-01-26'),
     cost: 123,
     links: {
       detailLink: '',
@@ -101,7 +101,7 @@ export const projectsData: ProjectType[] = [
     previewImage:
       'http://tech.sereja-art.ru/upload/projects/ant-farm_1280x720.png',
     tools: ['HTML', 'CSS', 'JS', 'Photoshop', 'Bicall'],
-    year: 2023,
+    year: 2019,
     active: true,
   },
 
@@ -109,7 +109,7 @@ export const projectsData: ProjectType[] = [
     name: 'Глория - клуб любителей кошек',
     description:
       'Разработал прототип и дизайн-макет сайта, выполнил адаптивную верстку.',
-    date: new Date('2017-01-26'),
+    date: new Date('2020-01-26'),
     cost: 123,
     links: {
       detailLink: '',
@@ -120,7 +120,7 @@ export const projectsData: ProjectType[] = [
     previewImage:
       'http://tech.sereja-art.ru/upload/projects/gloria_1280x720.png',
     tools: ['HTML', 'CSS', 'JS', 'Photoshop'],
-    year: 2023,
+    year: 2020,
     active: true,
   },
 
@@ -139,7 +139,7 @@ export const projectsData: ProjectType[] = [
     previewImage:
       'http://tech.sereja-art.ru/upload/projects/photograph_1200.webp',
     tools: ['HTML', 'CSS', 'JS', 'Photoshop'],
-    year: 2020,
+    year: 2018,
     active: true,
   },
 

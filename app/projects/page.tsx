@@ -6,12 +6,15 @@ import { BsGithub } from 'react-icons/bs';
 import { FiExternalLink } from 'react-icons/fi';
 
 function Projects() {
-
+  console.log(projectsData);
+  
   return (
     <>
       <h1 className="block-title">Проекты</h1>
       <ul className='grid gap-5 lg:grid-cols-2'>
-        {projectsData.map((project, index) => (
+        {projectsData.sort((a, b) =>
+      a && b ? new Date(b.date).getTime() - new Date(a.date).getTime() : 0
+    ).map((project, index) => (
           <li
             key={index}
             className="flex-col p-3 pb-6 border block-bg border-blockBorderColorLight dark:border-blockBorderColorDark rounded-2xl"
