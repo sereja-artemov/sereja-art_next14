@@ -5,16 +5,17 @@ interface figcaptionProps {
   src: string;
   caption?: string;
   alt: string;
+  vertical?: boolean;
 }
 
-export default function Figcaption({ src, caption, alt }: figcaptionProps) {
+export default function Figcaption({ src, caption, alt, vertical }: figcaptionProps) {
   if (caption !== undefined) {
     return (
       <>
         {/* <ZoomImage src={src} alt={alt} /> */}
         <figure>
           <Image
-            className='w-auto mx-auto'
+            className={`${vertical && 'w-full h-auto max-w-[450px]'} w-auto mx-auto`}
             width={1920}
             height={1080}
             src={src}
