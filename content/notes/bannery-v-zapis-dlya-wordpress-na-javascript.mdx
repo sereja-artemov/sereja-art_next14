@@ -1,0 +1,228 @@
+---
+title: Как добавить баннеры в Wordpress и не только на чистом JS
+date: 2024-05-31
+published: true
+category: web-dev
+keywords: Wordpress banner, баннеры для вордпресс, верстка баннеров для вордпресс
+excerpt: Пример верстки баннеров для записи Wordpress и не только на чистом Javascript
+coverImage: ''
+---
+
+## Задача
+Сверстать баннеры для страниц блога на Wordpress. Баннеры должны выводиться рандомно после второго абзаца. При переходе в следующую запись, нужно показывать новый баннер, который не совпадает с предыдущим. Также необходимо предусмотреть картинки баннеров для мобильной версии.
+
+Для решения этой задачи я создам ```<template>``` с разметкой для баннера, вставлю эту разметку на страницу и заполню данными. Для вывода уникальных баннеров, я буду использовать localStorage. Код скрипта с комментариями ниже.
+
+<CodeTitle title='<template> баннеров' lang='html' />
+```html
+<template id="post-creative-tmplt">
+    <div class="post-creative">
+      <article class="container post-creative__item">
+        <a class="post-creative__link" href="#">
+          <picture>
+            <source srcset="" media="(max-width: 500px)">
+            <img srcset="" alt="">
+          </picture>
+        </a>
+      </article>
+    </div>
+</template>
+```
+
+<CodeTitle title='css стили для баннера' lang='css' />
+```css
+.post-creative__item {
+  width: 100%;
+  height: auto;
+  max-width: 1200px;
+  margin: 0 auto;  
+}
+
+.post-creative__item source,
+.post-creative__item img {
+  width: 100%;
+  height: auto;
+}
+.post-creative {
+  margin: 30px 0;
+}
+```
+
+<CodeTitle title='Скрипт с комментариями для вывода баннеров' lang='js' />
+```js
+document.addEventListener('DOMContentLoaded', function () {
+  if (document.createElement('template').content) {
+    /* Код выполнится, если браузер поддерживает <template> */
+    const template = document.querySelector('#post-creative-tmplt');
+    const secondParagraph = document.getElementsByTagName('p')[1];
+    const creative = template.content.cloneNode(true);
+
+    // Вставляем шаблон в DOM после второго абзаца p
+    secondParagraph.parentNode.insertBefore(creative, secondParagraph.nextSibling);
+    const imageContainer = document.querySelector('.post-creative__item');
+    const image = imageContainer.querySelector('img');
+    const imageMobile = imageContainer.querySelector('source');
+    const imageLink = imageContainer.querySelector('.post-creative__link');
+
+    renderCreativeBanners();
+
+    async function renderCreativeBanners() {
+      // получаем баннеры
+      const creativeJSON = await getCreativesData();
+      let randomCreative;
+      // закидываем их в localStorage
+      !localStorage.getItem('creativeArr') &&
+      localStorage.setItem('creativeArr', JSON.stringify(creativeJSON));
+
+      // если баннеры есть в localStorage
+      if (localStorage.getItem('creativeArr')) {
+        let storageCreativeData = localStorage.getItem('creativeArr');
+        // достаем баннеры из localStorage
+        let creativesArr = JSON.parse(storageCreativeData);
+        let lastShownCreativeIdData = localStorage.getItem('lastShownCreativeId');
+        // достаем ID последнего показанного баннера из localStorage
+        let lastShownCreativeId = JSON.parse(lastShownCreativeIdData);
+        // получаем случайный и записываем его ID в localStorage
+        let randIndex = Math.floor(Math.random() * creativesArr.length);
+        localStorage.setItem('lastShownCreativeId', JSON.stringify(creativesArr[randIndex].id));
+        // если баннер был показан в прошлый раз, то продолжаем генерировать
+        while (creativesArr[randIndex].id === lastShownCreativeId) {
+          randIndex = Math.floor(Math.random() * creativesArr.length);
+          localStorage.setItem('lastShownCreativeId', JSON.stringify(creativesArr[randIndex].id));
+        }
+
+        // случайный баннер
+        randomCreative = creativesArr[randIndex];
+        // удаляем, показанный баннер и обновляем localStorage
+        creativesArr.splice(randIndex, 1);
+        localStorage.setItem('creativeArr', JSON.stringify(creativesArr));
+        // если массив с баннерами пустой, то перезаполняем его
+        !creativesArr.length && localStorage.setItem('creativeArr', JSON.stringify(creativeJSON));
+      } else {
+        // если баннеров нет в localStorage
+        randomCreative = getRandomActiveCreative(creativeJSON);
+        // Прячем блок с креативом, если массив пустой
+        creativeJSON.length === 0 && creativeBlock.classList.add('hidden');
+      }
+
+      image.src = randomCreative.desktopImageUrl;
+      imageMobile.srcset = randomCreative.mobileImageUrl;
+      imageLink.href = `${window.location.href.replace('#blog_subscribe', '')}#blog_subscribe`;
+    }
+
+    async function getCreativesData() {
+      const res = await fetch('./creativeJSON.json');
+      const data = res.json();
+
+      if (!res.ok) {
+        throw new Error(`Что-то пошло не так: ${res.statusText}, ${res.status}`);
+      }
+
+      return data;
+    }
+
+    function getRandomActiveCreative(arr) {
+      const index = Math.floor(Math.random() * arr.length);
+      return arr[index];
+    }
+  } else {
+    console.log(`На дворе ${new Date().getFullYear()} год, а ваш браузер не поддерживает template`);
+  }
+});
+```
+
+<CodeTitle title='json с контентом баннеров' lang='json' />
+```json
+[
+  {
+    "id": 1,
+    "desktopImageUrl": "/img/1.gif",
+    "mobileImageUrl": "/img/1-mob.gif"
+  },
+  {
+    "id": 2,
+    "desktopImageUrl": "/img/2.gif",
+    "mobileImageUrl": "/img/2-mob.gif"
+  },
+  {
+    "id": 3,
+    "desktopImageUrl": "/img/3.gif",
+    "mobileImageUrl": "/img/3-mob.gif"
+  }
+]
+```
+
+<CodeTitle title='HTML разметка страницы с версткой' lang='html' />
+```html
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Заголовок</h1>
+  <p>Первый абзац)</p>
+  <p>Второй абзац))</p>
+  <br>
+  <br>
+  <p>Третий абзац)))</p>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div id="blog_subscribe">якорь тут</div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <!-- Баннер картинкой -->
+  <template id="post-creative-tmplt">
+    <div class="post-creative">
+      <article class="container post-creative__item">
+        <a class="post-creative__link" href="#">
+          <picture>
+            <source srcset="" media="(max-width: 500px)">
+            <img srcset="" alt="">
+          </picture>
+        </a>
+      </article>
+    </div>
+  </template>
+
+  <script src="/script.js"></script>
+</body>
+
+</html>
+```
