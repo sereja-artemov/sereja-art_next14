@@ -1,3 +1,4 @@
+'use client'
 import Link from 'next/link';
 
 const DonationBlog = () => {
@@ -88,12 +89,17 @@ const DonationBlog = () => {
         </div>
         <p className='leading-6 mb-4 lg:text-base lg:mb-6'>Это помогает создавать больше полезных и интересных материалов.</p>
         <div className='flex gap-4 items-center'>
-          <Link className='btn bg-[#21a138] text-lg lg:text-xl font-medium text-whitePrimary border-none' href='https://pay.mysbertips.ru/35702100' rel='nofollow' target='_blank'>Угостить кофе</Link>
+          <Link onClick={setYm} className='btn bg-[#21a138] text-lg lg:text-xl font-medium text-whitePrimary border-none' href='https://pay.mysbertips.ru/35702100' rel='nofollow' target='_blank'>Угостить кофе</Link>
           <p className='text-secondTextColor dark:text-secondTextColorDark text-xs max-lg:hidden lg:text-sm'>отсканируйте QR-код или нажмите на кнопку</p>
         </div>
       </div>
     </article>
   );
 };
+
+function setYm() {
+  ym(94063322,'reachGoal','donationArticle');
+  console.log('setYm');
+}
 
 export default DonationBlog;
