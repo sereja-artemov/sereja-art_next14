@@ -4,10 +4,10 @@ import Link from 'next/link';
 async function NotesBlock() {
   
   const notes = await getPosts('notes');
-  //получаем 8 активных записей
+  //получаем 7 активных записей
   const filteredNotes = notes
     .filter((note) => note.published)
-    .slice(0, 8 + 1);
+    .slice(0, 7 + 1);
 
   return (
     <ul className="flex flex-col gap-2 xl:text-sm lg:text-base">
